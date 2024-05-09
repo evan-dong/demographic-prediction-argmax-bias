@@ -28,7 +28,7 @@ def thompson_discretization(matrix):
     return np.array(answers)
 
 
-def nucleus_sampling(probs, top_k: int | None = None):
+def top_k_sampling(probs, top_k: int | None = None):
     probs = np.array(probs)
     n_units, n_classes = probs.shape
     bottom_k = n_classes - top_k

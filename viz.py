@@ -64,7 +64,7 @@ def plot_pareto(
         )
 
     for curve in curves:
-        curve_samples = means[means.index.str.contains(curve)]
+        curve_samples = means[means.index.str.contains(curve, regex=False)]
         curve_samples = curve_samples.sort_index()
 
         plt.plot(
@@ -113,7 +113,7 @@ def plot_broken_pareto(
         columns = point_list + [
             curve_value
             for curve in curve_list
-            for curve_value in means.index[means.index.str.contains(curve)]
+            for curve_value in means.index[means.index.str.contains(curve, regex=False)]
         ]
         values = means.loc[columns]
         maximum = values[acc_col].max(axis=None)
@@ -144,7 +144,7 @@ def plot_broken_pareto(
         )
 
     for curve in all_curves:
-        curve_samples = means[means.index.str.contains(curve)]
+        curve_samples = means[means.index.str.contains(curve, regex=False)]
         curve_samples = curve_samples.sort_index()
 
         bax.plot(
